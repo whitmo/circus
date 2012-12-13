@@ -91,6 +91,10 @@ class Controller(object):
         cast = json_msg.get('msg_type') == "cast"
 
         try:
+            if cmd_name is None:
+                error = "no cmd: %r" % cmd_name
+                return self.send_error(cid, msg, error, cast=cast,
+                                       errno=errors.UNKNOWN_COMMAND)
             cmd = self.commands[cmd_name.lower()]
         except KeyError:
             error = "unknown command: %r" % cmd_name
@@ -162,3 +166,4 @@ class Controller(object):
         except zmq.ZMQError as e:
             logger.debug("Received %r - Could not send back %r - %s", msg,
                          resp, str(e))
+
