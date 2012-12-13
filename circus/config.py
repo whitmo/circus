@@ -125,7 +125,7 @@ def get_config(config_file):
     if stream_backend == 'gevent':
         try:
             import gevent           # NOQA
-            import gevent_zeromq    # NOQA
+            #import gevent_zeromq    # NOQA
         except ImportError:
             sys.stderr.write("stream_backend set to gevent, " +
                              "but gevent or gevent_zeromq isn't installed\n")
@@ -133,9 +133,9 @@ def get_config(config_file):
             sys.exit(1)
 
         from gevent import monkey
-        from gevent_zeromq import monkey_patch
+        #from gevent_zeromq import monkey_patch
         monkey.patch_all()
-        monkey_patch()
+        #monkey_patch()
 
     config['stream_backend'] = stream_backend
 
@@ -260,3 +260,4 @@ def get_config(config_file):
     config['plugins'] = plugins
     config['sockets'] = sockets
     return config
+
