@@ -134,7 +134,7 @@ def get_config(config_file):
 
         from gevent import monkey
         #from gevent_zeromq import monkey_patch
-        monkey.patch_all()
+        monkey.patch_all(subprocess=False)
         #monkey_patch()
 
     config['stream_backend'] = stream_backend

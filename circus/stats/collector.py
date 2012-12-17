@@ -1,11 +1,10 @@
 from collections import defaultdict
 try:
+    from . import _patch
     import gevent       # NOQA
     from gevent import monkey
     monkey.noisy = False
-    monkey.patch_all()
-    from gevent_zeromq import monkey_patch
-    monkey_patch()
+    monkey.patch_all(subprocess=False)
 except ImportError:
     pass
 

@@ -107,10 +107,11 @@ try:
         except ImportError:
             raise ImportError(_MSG)
 
-    monkey.patch_all()
+    monkey.patch_all(subprocess=False)
 except ImportError:
     try:
         import zmq      # NOQA
     except ImportError:
         # lazy loading
         zmq = None      # NOQA
+
