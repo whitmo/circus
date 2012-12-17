@@ -16,3 +16,4 @@ examples/test.log
 man/
 .tox/
 build/
+*~
